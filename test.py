@@ -158,19 +158,19 @@ batch_size = 15
 # Create the DataLoaders for our training and validation sets.
 # We'll take training samples in random order. 
 
-train_dataloader = DataLoader(
-            train_dataset,  # The training samples.
-            sampler = RandomSampler(train_dataset), # Select batches randomly
-            batch_size = batch_size # Trains with this batch size.
-        )
+# train_dataloader = DataLoader(
+#             train_dataset,  # The training samples.
+#             sampler = RandomSampler(train_dataset), # Select batches randomly
+#             batch_size = batch_size # Trains with this batch size.
+#         )
 
-# For validation the order doesn't matter, so we'll just read them sequentially.
+# # For validation the order doesn't matter, so we'll just read them sequentially.
 
-validation_dataloader = DataLoader(
-            val_dataset, # The validation samples.
-            sampler = SequentialSampler(val_dataset), # Pull out batches sequentially.
-            batch_size = batch_size # Evaluate with this batch size.
-)
+# validation_dataloader = DataLoader(
+#             val_dataset, # The validation samples.
+#             sampler = SequentialSampler(val_dataset), # Pull out batches sequentially.
+#             batch_size = batch_size # Evaluate with this batch size.
+# )
 
 prediction_data = TensorDataset(test_input_ids, test_attention_masks)
 prediction_sampler = SequentialSampler(prediction_data)
