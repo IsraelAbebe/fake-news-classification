@@ -236,5 +236,8 @@ for batch in prediction_dataloader:
   predictions.append(logits)
 
 
+flat_predictions = [item for sublist in predictions for item in sublist]
+flat_predictions = np.argmax(flat_predictions, axis=1).flatten()
+
 print('    DONE.')
-print(predictions)
+print(flat_predictions)
