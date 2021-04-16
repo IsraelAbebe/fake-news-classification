@@ -61,7 +61,8 @@ np.random.seed(seed_val)
 torch.manual_seed(seed_val)
 torch.cuda.manual_seed_all(seed_val)
 
-def predict(combined = ['test text']):
+
+def predict(combined = ['FLYNN: Hillary Clinton, Big Woman on Campus - Breitbart Daniel J. Flynn']):
     if torch.cuda.is_available():
         device = torch.device('cuda')    
         print('There are %d GPU(s) available.' % torch.cuda.device_count())
@@ -71,19 +72,13 @@ def predict(combined = ['test text']):
         device = torch.device('cpu')
 
 
-    
 
     tokenizer = BertTokenizer.from_pretrained('bert-large-uncased', do_lower_case=True)
 
     max_len = 0
     for text in combined:
 
-        # Tokenize the text and add `[CLS]` and `[SEP]` tokens.
-        
         input_ids = tokenizer.encode(text, add_special_tokens=True)
-
-        # Update the maximum sentence length.
-        
         max_len = max(max_len, len(input_ids))
 
     print('Max sentence length: ', max_len)
@@ -105,19 +100,8 @@ def predict(combined = ['test text']):
         
         input_ids = []
         attention_masks = []
-
-        # For every sentence...
         
         for text in sentence:
-            #   "encode_plus" will:
-            
-            #   (1) Tokenize the sentence.
-            #   (2) Prepend the `[CLS]` token to the start.
-            #   (3) Append the `[SEP]` token to the end.
-            #   (4) Map tokens to their IDs.
-            #   (5) Pad or truncate the sentence to `max_length`
-            #   (6) Create attention masks for [PAD] tokens.
-            
             encoded_dict = tokenizer.encode_plus(
                                 text,                      # Sentence to encode.
                                 add_special_tokens = True, # Add '[CLS]' and '[SEP]'
@@ -128,15 +112,9 @@ def predict(combined = ['test text']):
                                 return_tensors = 'pt',     # Return pytorch tensors.
                         )
 
-            # Add the encoded sentence to the id list. 
-            
             input_ids.append(encoded_dict['input_ids'])
-
-            # And its attention mask (simply differentiates padding from non-padding).
-            
             attention_masks.append(encoded_dict['attention_mask'])
 
-        # Convert the lists into tensors.
         
         input_ids = torch.cat(input_ids, dim=0)
         attention_masks = torch.cat(attention_masks, dim=0)
@@ -164,9 +142,6 @@ def predict(combined = ['test text']):
         output_attentions = False, # Whether the model returns attentions weights.
         output_hidden_states = False, # Whether the model returns all hidden-states.
     )
-
-    # Tell pytorch to run this model on the device which we set GPU in our case.
-
     model.to(device)
 
 
@@ -174,51 +149,42 @@ def predict(combined = ['test text']):
 
 
     print('Predicting labels for {:,} test sentences...'.format(len(test_input_ids)))
-
-    # Put model in evaluation mode:
-
     model.eval()
-
-    # Tracking variables :
-
     predictions = []
 
-    # Predict:
+    for batch in prediction_dataloader: 
+        batch = tuple(t.to(device) for t in batch)
 
-    for batch in prediction_dataloader:
-        
-    # Add batch to GPU
+        # Unpack the inputs from our dataloader:
 
-    batch = tuple(t.to(device) for t in batch)
-    
-    # Unpack the inputs from our dataloader:
-        
-    b_input_ids, b_input_mask, = batch
-    
-    # Telling the model not to compute or store gradients, saving memory and speeding up prediction:
+        b_input_ids, b_input_mask, = batch
 
-    with torch.no_grad():
-        # Forward pass, calculate logit predictions:
-        
-        outputs = model(b_input_ids, token_type_ids=None, 
-                        attention_mask=b_input_mask)
+        # Telling the model not to compute or store gradients, saving memory and speeding up prediction:
 
-    logits = outputs[0]
+        with torch.no_grad():
+            # Forward pass, calculate logit predictions:
 
-    # Move logits and labels to CPU:
-        
-    logits = logits.detach().cpu().numpy()
-    
-        
-        
-    
-    # Store predictions and true labels:
-        
-    predictions.append(logits)
+            outputs = model(b_input_ids, token_type_ids=None, 
+                            attention_mask=b_input_mask)
+
+        logits = outputs[0]
+
+        # Move logits and labels to CPU:
+
+        logits = logits.detach().cpu().numpy()
+
+
+
+
+        # Store predictions and true labels:
+
+        predictions.append(logits)
 
 
     flat_predictions = [item for sublist in predictions for item in sublist]
     flat_predictions = np.argmax(flat_predictions, axis=1).flatten()
 
-    return flat_predictions
-print(predict(combined = ['test text']))
+    print('    DONE.')
+    print(flat_predictions)
+
+print(predict())
