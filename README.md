@@ -1,7 +1,7 @@
 # fake-news-classification
-
-binary classification for fake news detection trained on 20k dataset 
 -------------------------------------
+binary classification for fake news detection trained on 20k dataset 
+
 
 
 ## usage
