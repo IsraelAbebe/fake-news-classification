@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message InputMessage {
+    string value = 1;
+}
+
+message OutputMessage {
+    int32 result = 2;
+}
+
+service fake_news_classification {
+    rpc predict(InputMessage) returns (OutputMessage) {}
+}
