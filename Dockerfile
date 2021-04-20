@@ -24,7 +24,7 @@ COPY requirement.txt /tmp
 
 WORKDIR /tmp
 
-RUN python3.6 -m pip install -r requirements.txt
+RUN python3.6 -m pip install -r requirement.txt
 
 COPY . /fake-news-classification 
 
