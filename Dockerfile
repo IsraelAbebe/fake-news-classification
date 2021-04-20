@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
         libsm6 \
         libxext6 \ 
-        libxrender-dev
+        libxrender-dev \
+        gnutls-bin
 
 
 RUN python3.6 -m pip install -U pip
