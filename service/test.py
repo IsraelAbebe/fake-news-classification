@@ -145,7 +145,7 @@ def predict(combined = ['FLYNN: Hillary Clinton, Big Woman on Campus - Breitbart
     model.to(device)
 
 
-    # model.load_state_dict(torch.load("fake-news-detector.pth"))
+    model.load_state_dict(torch.load("fake-news-detector.pth"))
 
 
     print('Predicting labels for {:,} test sentences...'.format(len(test_input_ids)))
