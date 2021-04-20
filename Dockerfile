@@ -19,9 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN python3.6 -m pip install -U pip
 RUN python3.6 -m pip install --upgrade setuptools
-COPY requirements.txt /tmp
-
-WORKDIR /tmp
+COPY requirements.txt .
+WORKDIR .
 
 RUN python3.6 -m pip install -r requirements.txt
 
@@ -29,10 +28,14 @@ COPY . /fake-news-classification
 
 WORKDIR /fake-news-classification/service
 
+RUN git clone https://gitlab.com/nunet/fake-news-detection/data-storage
+
+RUN cp data-storage/fake-news-detector.pth  .
+
 # VOLUME /image-retrieval-in-pytorch/data/classed_data
 
 EXPOSE 7011
 
 RUN python -m spacy download en 
 RUN sh buildproto.sh
-RUN python3.6 server.py
+CMD ['python3.6' ,'server.py']
