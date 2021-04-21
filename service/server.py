@@ -25,7 +25,7 @@ server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 fake_news_pb2_grpc.add_fake_news_classificationServicer_to_server(fake_news_classificationServicer(), server)
 
 print('Starting server. Listening on port 7011.')
-server.add_insecure_port('localhost:7011')
+server.add_insecure_port('0.0.0.0:7011')
 server.start()
 
 try:

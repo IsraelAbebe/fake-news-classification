@@ -25,20 +25,24 @@ COPY requirement.txt /tmp
 
 WORKDIR /tmp
 
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+
 RUN python3.6 -m pip install -r requirement.txt
 
 COPY . /fake-news-classification 
 
 WORKDIR /fake-news-classification/service
 
-RUN git clone https://gitlab.com/nunet/fake-news-detection/data-storage
+#RUN git clone https://gitlab.com/nunet/fake-news-detection/data-storage
 
-RUN cp data-storage/fake-news-detector.pth  .
+#RUN cp data-storage/fake-news-detector.pth  .
 
 # VOLUME /image-retrieval-in-pytorch/data/classed_data
 
 EXPOSE 7011
 
-RUN python -m spacy download en 
+RUN python3.6 -m spacy download en 
 RUN sh buildproto.sh
-CMD ['python3.6' ,'server.py']
+CMD ["python3.6" ,"server.py"]
