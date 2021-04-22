@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libsm6 \
         libxext6 \ 
         libxrender-dev \
-        gnutls-bin
+        vim \
+        lsof
 
 RUN SNETD_GIT_VERSION=`curl -s https://api.github.com/repos/singnet/snet-daemon/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")' || echo "v3.1.6"` && \
     SNETD_VERSION=${snetd_version:-${SNETD_GIT_VERSION}} && \
