@@ -1,3 +1,4 @@
+snet-cli
 grpcio
 grpcio-tools
 numpy
