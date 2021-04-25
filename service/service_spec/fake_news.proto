@@ -9,5 +9,5 @@ message OutputMessage {
 }
 
 service fake_news_classification {
-    rpc predict(InputMessage) returns (OutputMessage) {}
+    rpc classify(InputMessage) returns (OutputMessage) {}
 }
