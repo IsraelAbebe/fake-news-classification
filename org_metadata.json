@@ -1,0 +1,26 @@
+{
+    "org_name": "nunet",
+    "org_id": "nunet-org",
+    "org_type": "individual",
+    "description": {},
+    "assets": {},
+    "contacts": [],
+    "groups": [
+        {
+            "group_name": "default_group",
+            "group_id": "mFVJwqHYREJFiBWIs0iO05NSudNmLdT7pirUGHy1/yQ=",
+            "payment": {
+                "payment_address": "0x45A9a93bd56C2A00cEDEafA59aD04DD73E88C8B8",
+                "payment_expiration_threshold": 100,
+                "payment_channel_storage_type": "etcd",
+                "payment_channel_storage_client": {
+                    "connection_timeout": "100s",
+                    "request_timeout": "5s",
+                    "endpoints": [
+                        "https://snet-etcd.singularitynet.io:2379"
+                    ]
+                }
+            }
+        }
+    ]
+}

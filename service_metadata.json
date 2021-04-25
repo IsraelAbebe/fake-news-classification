@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "display_name": "stanza Service",
+    "encoding": "proto",
+    "service_type": "grpc",
+    "model_ipfs_hash": "QmYt2AmtEhA9Bef1cYKBdBCsD1P3XBTWcyNgCexksNYgUK",
+    "mpe_address": "0x8FB1dC8df86b388C7e00689d1eCb533A160B4D0C",
+    "groups": [
+        {
+            "group_name": "default_group",
+            "endpoints": [
+                "http://109.88.2.12:7010"
+            ],
+            "pricing": [
+                {
+                    "price_model": "fixed_price",
+                    "price_in_cogs": 1,
+                    "default": true
+                }
+            ],
+            "group_id": "mFVJwqHYREJFiBWIs0iO05NSudNmLdT7pirUGHy1/yQ="
+        }
+    ],
+    "assets": {}
+}

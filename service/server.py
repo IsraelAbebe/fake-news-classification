@@ -3,8 +3,8 @@ import grpc
 from concurrent import futures
 import time
 
-# import sys
-# sys.path.insert(0, 'service/')
+import sys
+sys.path.insert(0, 'service/')
 
 from service_spec import fake_news_pb2
 from service_spec import fake_news_pb2_grpc
@@ -15,7 +15,7 @@ import test
 
 class fake_news_classificationServicer(fake_news_pb2_grpc.fake_news_classificationServicer):
 
-    def classify(self, request, context):
+    def classifygit s(self, request, context):
         response = fake_news_pb2.OutputMessage()
         response.result = test.predict(request.value)
         return response

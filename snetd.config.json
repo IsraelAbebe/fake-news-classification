@@ -1,0 +1,23 @@
+{
+    "BLOCKCHAIN_NETWORK_SELECTED": "ropsten",
+    "DAEMON_END_POINT": "0.0.0.0:7010",
+    "ETHEREUM_JSON_RPC_ENDPOINT": "https://ropsten.infura.io/v3/e7732e1f679e461b9bb4da5653ac3fc2",
+    "IPFS_END_POINT": "http://ipfs.singularitynet.io:80",
+    "PASSTHROUGH_ENABLED": true,
+    "PASSTHROUGH_ENDPOINT": "http://109.88.2.12:7011",
+    "ORGANIZATION_ID": "nunet-org",
+    "SERVICE_ID": "stanza-service",
+    "payment_channel_ca_path": "/opt/singnet/.certs/ca.pem",
+    "payment_channel_cert_path": "/opt/singnet/.certs/client.pem",
+    "payment_channel_key_path": "/opt/singnet/.certs/client-key.pem",
+    "log": {
+        "level": "debug",
+        "output": {
+            "current_link": "./snetd-ropsten.log",
+            "file_pattern": "./snetd-ropsten.%Y%m%d.log",
+            "rotation_count": 0,
+            "rotation_time_in_sec": 8640,
+            "type": "file"
+        }
+    }
+}

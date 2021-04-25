@@ -1,8 +1,8 @@
 import grpc
 
-# import sys
+import sys
 
-# sys.path.insert(0, 'service/')
+sys.path.insert(0, 'service/')
 
 from service_spec import fake_news_pb2
 from service_spec import fake_news_pb2_grpc
