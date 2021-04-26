@@ -6,7 +6,7 @@
     "PASSTHROUGH_ENABLED": true,
     "PASSTHROUGH_ENDPOINT": "http://109.88.2.12:7011",
     "ORGANIZATION_ID": "nunet-org",
-    "SERVICE_ID": "stanza-service",
+    "SERVICE_ID": "fake-news-binary-classification",
     "payment_channel_ca_path": "/opt/singnet/.certs/ca.pem",
     "payment_channel_cert_path": "/opt/singnet/.certs/client.pem",
     "payment_channel_key_path": "/opt/singnet/.certs/client-key.pem",

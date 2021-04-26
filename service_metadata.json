@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "display_name": "stanza Service",
+    "display_name": "fake-news-binary-classification",
     "encoding": "proto",
     "service_type": "grpc",
     "model_ipfs_hash": "QmYt2AmtEhA9Bef1cYKBdBCsD1P3XBTWcyNgCexksNYgUK",
