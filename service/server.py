@@ -15,7 +15,7 @@ import test
 
 class fake_news_classificationServicer(fake_news_pb2_grpc.fake_news_classificationServicer):
 
-    def classifygit s(self, request, context):
+    def classify(self, request, context):
         response = fake_news_pb2.OutputMessage()
         response.result = test.predict(request.value)
         return response
