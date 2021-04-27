@@ -57,4 +57,4 @@ RUN python3.6 -m spacy download en
 RUN sh buildproto.sh
 
 WORKDIR /fake-news-classification/
-CMD ["python3.6" ,"service/server.py"]
+CMD ["python3.6" ,"run_fakeNews_service.py","--daemon-config","snetd.config.json"]

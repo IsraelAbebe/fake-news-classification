@@ -1,9 +1,9 @@
 {
     "version": 1,
-    "display_name": "fake-news-binary-classification",
+    "display_name": "Fake News Binary Classification",
     "encoding": "proto",
     "service_type": "grpc",
-    "model_ipfs_hash": "QmYt2AmtEhA9Bef1cYKBdBCsD1P3XBTWcyNgCexksNYgUK",
+    "model_ipfs_hash": "QmQeTgSz3ktNHX34mZW4LH6PtVi5FnWF6fQ1xWnH281qKy",
     "mpe_address": "0x8FB1dC8df86b388C7e00689d1eCb533A160B4D0C",
     "groups": [
         {
